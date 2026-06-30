@@ -7,16 +7,19 @@ func TestHello(t *testing.T) {
 		got := Hello("Chris")
 		want := "Hello, Chris"
 
-		if got != want {
-			t.Errorf("Got %q want %q", got, want)
-		}
+		checkTest(t, got, want)
 	})
 	t.Run("testing default fallback when no name provided", func(t *testing.T) {
 		got := Hello("")
 		want := "Hello, World"
 
-		if got != want {
-			t.Errorf("Got %q want %q", got, want)
-		}
+		checkTest(t, got, want)
 	})
+}
+
+func checkTest(t testing.TB, got, want string) {
+	t.Helper()
+	if got != want {
+		t.Errorf("Got %q want %q", got, want)
+	}
 }
