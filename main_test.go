@@ -18,7 +18,7 @@ func TestHello(t *testing.T) {
 }
 
 func checkTest(t testing.TB, got, want string) {
-	t.Helper()
+	t.Helper() // Setting line number report to the cal of the checkTest() funciton call
 	if got != want {
 		t.Errorf("Got %q want %q", got, want)
 	}
