@@ -18,8 +18,8 @@ func TestSum(t *testing.T) {
 }
 
 func TestSumAll(t *testing.T) {
-	got := SumAllTails([]int{4, 5, 6}, []int{1,2,3})
-	want := []int{11, 5}
+	got := SumAllTails([]int{4, 5, 6, 1}, []int{1,2,3}, []int{100,0})
+	want := []int{12, 5, 0}
 
 	if !slices.Equal(got, want) {
 		t.Errorf("Got %v want %v", got, want)
