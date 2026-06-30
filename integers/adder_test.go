@@ -2,7 +2,7 @@ package integers
 
 import "testing"
 
-func TestAdd(t *testing.T) {
+func TestAdder(t *testing.T) {
 	got := Add(2, 2)
 	want := 4
 
