@@ -6,3 +6,12 @@ func Sum(nbrs []int) (sum int) {
 	}
 	return
 }
+
+func SumAll(arr ...[]int) []int {
+	var ret []int
+	ret = make([]int, len(arr))
+	for i, nbrs := range arr {
+		ret[i] = Sum(nbrs)
+	}
+	return ret
+}
