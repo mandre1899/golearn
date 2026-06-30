@@ -6,7 +6,7 @@ import (
 
 
 func TestSum(t *testing.T) {
-	nbrs := [5]int{1,2,3,4,5}
+	nbrs := []int{1,2,3,4,5}
 
 	got := Sum(nbrs)
 	want := 15
