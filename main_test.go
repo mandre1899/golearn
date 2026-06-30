@@ -4,14 +4,26 @@ import "testing"
 
 func TestHello(t *testing.T) {
 	t.Run("saying hello to people", func(t *testing.T) {
-		got := Hello("Chris")
+		got := Hello("Chris", "")
 		want := "Hello, Chris"
 
 		checkTest(t, got, want)
 	})
 	t.Run("testing default fallback when no name provided", func(t *testing.T) {
-		got := Hello("")
+		got := Hello("", "")
 		want := "Hello, World"
+
+		checkTest(t, got, want)
+	})
+	t.Run("in spanish", func(t *testing.T) {
+		got := Hello("Elodie", "Spanish")
+		want := "Hola, Elodie"
+
+		checkTest(t, got, want)
+	})
+	t.Run("in french", func(t *testing.T) {
+		got := Hello("Malik", "FRENCH")
+		want := "Bonjour, Malik"
 
 		checkTest(t, got, want)
 	})
