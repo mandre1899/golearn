@@ -2,12 +2,11 @@ package main
 
 import "testing"
 
-func TestAdd(t *testing.T) {
-	sum := add(2, 2)
-	exp := 4
+func TestHello(t *testing.T) {
+	got := Hello("Mateo")
+	want := "Hello, Mateo"
 
-	if sum != exp {
-		t.Errorf("failed: expected %d got %d", exp, sum)
+	if got != want {
+		t.Errorf("got %q, want %q", got, want)
 	}
-
 }
