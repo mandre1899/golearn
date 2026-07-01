@@ -1,5 +1,7 @@
 package dictionary
 
-func Search(m map[string]string, toSearch string) string {
+type Dictionary map[string]string
+
+func Search(m Dictionary, toSearch string) string {
 	return m[toSearch]
 }
