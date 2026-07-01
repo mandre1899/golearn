@@ -16,12 +16,16 @@ func (w *Wallet) Balance() Bitcoin {
 	return w.balance
 }
 
-func (w *Wallet) Withdraw(amount Bitcoin) {
+func (w *Wallet) Withdraw(amount Bitcoin) error {
 	sum := w.balance - amount
 	if sum < 0 {
-		return
+		return fmt.Errorf(
+			"Insufficient funds: Balance(%s), Withdawal(%s)",
+			w.balance,
+			amount)
 	}
 	w.balance = sum
+	return nil
 }
 
 
