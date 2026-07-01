@@ -5,15 +5,33 @@ import "testing"
 func TestSearch(t *testing.T) {
 	dictionary := Dictionary{"test": "this is just a test"}
 
-	got := dictionary.Search("test")
-	want := "this is just a test"
-	
-	assertStrings(t, got, want)
+	t.Run("known key", func (t *testing.T){
+		got, _ := dictionary.Search("test")
+		want := "this is just a test"
+		assertStrings(t, got, want)
+	})
+	t.Run("unknown key", func(t *testing.T) {
+		got, err := dictionary.Search("na")
+		wantErr :=  "could not find the word you were looking for"
+		want := ""
+		assertError(t, err, wantErr)
+		assertStrings(t, got, want)
+	})
 }
 
 func assertStrings(t testing.TB, got, want string) {
 	t.Helper()
 	if got != want {
 		t.Errorf("Got %q want %q", got, want)
+	}
+}
+
+func assertError(t testing.TB, err error, want string) {
+	if err == nil {
+		t.Fatal("expected error but got nil")
+	}
+
+	if err.Error() !=  want {
+		t.Errorf("Got %q want %q", err.Error(), want)
 	}
 }
