@@ -16,8 +16,9 @@ func Test(t *testing.T) {
 
 func TestArea(t *testing.T) {
 	
-	checkArea := func(t testing.TB, got, want float64) {
+	checkArea := func(t testing.TB, s Shape, want float64) {
 		t.Helper()
+		got := s.Area()
 		if got != want {
 			t.Errorf("Got %g want %g", got, want)
 		}
@@ -25,16 +26,14 @@ func TestArea(t *testing.T) {
 
 	t.Run("rectangle", func(t *testing.T) {
 		rec := Rectangle{12,6}
-		got := rec.Area()
 		want := 72.0
 
-		checkArea(t, got, want)
+		checkArea(t, rec, want)
 	})
 	t.Run("circle", func(t *testing.T) {
 		c := Circle{2}
-		got := c.Area()
 		want := 12.566370614359172
 
-		checkArea(t, got, want)
+		checkArea(t, c, want)
 	})
 }
