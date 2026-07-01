@@ -34,6 +34,10 @@ func TestAdd(t *testing.T) {
 		want := "wow it worked"
 		assertStrings(t, got, want)
 	})
+	t.Run("add existing key", func(t *testing.T) {
+		err := dictionary.Add("test2", "wow")
+		assertError(t, err, errKeyExists.Error())
+	})
 	
 }
 
