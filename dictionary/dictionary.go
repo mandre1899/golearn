@@ -1,6 +1,8 @@
 package dictionary
 
-import "errors"
+import (
+	"errors"
+)
 
 var errNotFound = errors.New("could not find the word you were looking for")
 
@@ -12,4 +14,8 @@ func (d Dictionary) Search(toSearch string) (string, error) {
 		return "", errNotFound
 	}
 	return val, nil
+}
+
+func (d Dictionary) Add(key, val string) {
+	d[key] = val
 }

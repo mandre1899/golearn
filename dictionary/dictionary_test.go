@@ -1,6 +1,8 @@
 package dictionary
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestSearch(t *testing.T) {
 	dictionary := Dictionary{"test": "this is just a test"}
@@ -16,6 +18,20 @@ func TestSearch(t *testing.T) {
 		assertError(t, err, errNotFound.Error())
 		assertStrings(t, got, want)
 	})
+}
+
+func TestAdd(t *testing.T) {
+	dictionary := Dictionary{"test": "this is just a test"}
+	
+	dictionary.Add("test2", "wow it worked")
+	
+
+	t.Run("added key", func(t *testing.T) {
+		got, _ := dictionary.Search("test2")
+		want := "wow it worked"
+		assertStrings(t, got, want)
+	})
+	
 }
 
 func assertStrings(t testing.TB, got, want string) {
