@@ -27,7 +27,10 @@ func TestAdd(t *testing.T) {
 	
 
 	t.Run("added key", func(t *testing.T) {
-		got, _ := dictionary.Search("test2")
+		got, err := dictionary.Search("test2")
+		if err != nil {
+			t.Fatal("should find added word:", err)
+		}
 		want := "wow it worked"
 		assertStrings(t, got, want)
 	})
