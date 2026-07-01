@@ -1,16 +1,35 @@
 package wallet
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestWallet(t *testing.T) {
-	wallet := Wallet{}
+	t.Run("deposit", func(t *testing.T) {
+		wallet := Wallet{}
+	
+		wallet.Deposit(10)
+	
+		got := wallet.Balance()
+		want := Bitcoin(10)
+	
+		if got != want {
+			t.Errorf("Got %s want %s", got, want)
+		}
+	})
+	t.Run("withdraw", func(t *testing.T) {
+		wallet := Wallet{}
 
-	wallet.Deposit(10)
+		wallet.Deposit(20)
 
-	got := wallet.Balance()
-	want := 10
+		wallet.Withdraw(Bitcoin(10))
 
-	if got != want {
-		t.Errorf("Got %d want %d", got, want)
-	}
+		got := wallet.Balance()
+
+		want := Bitcoin(10)
+
+		if got != want {
+			t.Errorf("Got %s want %s", got, want)
+		}
+	})
 }
