@@ -20,20 +20,22 @@ func TestArea(t *testing.T) {
 		t.Helper()
 		got := s.Area()
 		if got != want {
-			t.Errorf("Got %g want %g", got, want)
+			t.Errorf("%#v got %g want %g", s, got, want)
 		}
 	}
 
-	t.Run("rectangle", func(t *testing.T) {
-		rec := Rectangle{12,6}
-		want := 72.0
+	tests := []struct {
+		s		Shape
+		want	float64
+	} {
+		{Rectangle{12,6}, 72.0},
+		{Circle{2}, 12.566370614359172},
+		{Triangle{12, 6}, 36.0},
+	}
 
-		checkArea(t, rec, want)
-	})
-	t.Run("circle", func(t *testing.T) {
-		c := Circle{2}
-		want := 12.566370614359172
-
-		checkArea(t, c, want)
-	})
+	for _,tc := range tests {
+		t.Run("test", func(t *testing.T) {
+			checkArea(t, tc.s, tc.want)
+		})
+	}
 }

@@ -15,6 +15,11 @@ type Rectangle struct {
 	heigth	float64
 }
 
+type Triangle struct {
+	base	float64
+	heigth	float64
+}
+
 func (r Rectangle) Perimeter() float64 {
 	return 2 * (r.heigth + r.width)
 }
@@ -25,4 +30,8 @@ func (r Rectangle) Area() float64 {
 
 func (c Circle) Area() float64 {
 	return math.Pi * (c.radius * c.radius)
+}
+
+func (t Triangle) Area() float64 {
+	return (t.base * t.heigth) * 0.5
 }
