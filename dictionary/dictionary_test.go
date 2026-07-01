@@ -12,9 +12,8 @@ func TestSearch(t *testing.T) {
 	})
 	t.Run("unknown key", func(t *testing.T) {
 		got, err := dictionary.Search("na")
-		wantErr :=  "could not find the word you were looking for"
 		want := ""
-		assertError(t, err, wantErr)
+		assertError(t, err, errNotFound.Error())
 		assertStrings(t, got, want)
 	})
 }
