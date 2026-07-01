@@ -1,9 +1,15 @@
 package iteration
 
-func Perimeter(width, height float64) float64 {
-	return 2 * (width + height)
+
+type Rectangle struct {
+	width	float64
+	heigth	float64
 }
 
-func Area(width, heigth float64) float64 {
-	return width * heigth
+func Perimeter(rec Rectangle) float64 {
+	return 2 * (rec.heigth + rec.width)
+}
+
+func Area(rec Rectangle) float64 {
+	return rec.heigth * rec.width
 }
