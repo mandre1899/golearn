@@ -15,22 +15,26 @@ func Test(t *testing.T) {
 }
 
 func TestArea(t *testing.T) {
+	
+	checkArea := func(t testing.TB, got, want float64) {
+		t.Helper()
+		if got != want {
+			t.Errorf("Got %g want %g", got, want)
+		}
+	}
+
 	t.Run("rectangle", func(t *testing.T) {
 		rec := Rectangle{12,6}
 		got := rec.Area()
 		want := 72.0
 
-		if got != want {
-			t.Errorf("Got %.2f want %.2f", got, want)
-		}
+		checkArea(t, got, want)
 	})
 	t.Run("circle", func(t *testing.T) {
 		c := Circle{2}
 		got := c.Area()
 		want := 12.566370614359172
 
-		if got != want {
-			t.Errorf("Got %g want %g", got, want)
-		}
+		checkArea(t, got, want)
 	})
 }
