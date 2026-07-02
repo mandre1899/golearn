@@ -47,12 +47,19 @@ func TestUpdate(t *testing.T) {
 	dictionary.Add("wow", "mau")
 
 	t.Run("Update existing", func(t *testing.T) {
-		dictionary.Update("wow", "lau")
+		err := dictionary.Update("wow", "lau")
+		if err != nil {
+			t.Errorf("Failed to update: %q", err)
+		}
 		got, err := dictionary.Search("wow")
 		if err != nil {
-			t.Error("Failed test")
+			t.Errorf("Failed to search: %q", err)
 		}
 		assertStrings(t, got, "lau")
+	})
+	t.Run("Update non-existing", func(t *testing.T) {
+		dictionary.Update("notexistent", "test")
+
 	})
 }
 
