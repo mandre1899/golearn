@@ -41,6 +41,21 @@ func TestAdd(t *testing.T) {
 	
 }
 
+func TestUpdate(t *testing.T) {
+	dictionary := Dictionary{"test": "okok"}
+
+	dictionary.Add("wow", "mau")
+
+	t.Run("Update existing", func(t *testing.T) {
+		dictionary.Update("wow", "lau")
+		got, err := dictionary.Search("wow")
+		if err != nil {
+			t.Error("Failed test")
+		}
+		assertStrings(t, got, "lau")
+	})
+}
+
 func assertStrings(t testing.TB, got, want string) {
 	t.Helper()
 	if got != want {
